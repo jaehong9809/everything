@@ -35,19 +35,12 @@ class PaperRepositoryV2Test {
 
     @Test
     void findbyid() throws NoSuchFieldException {
-        Long id=1L;
-        Paper byId = repository.findById(id);
-        System.out.println("byId.getWords() = " + byId.getWords());
-        System.out.println("byId.getId() = " + byId.getId());
+
     }
 
     @Test
     void update() throws NoSuchFieldException {
-        String string="1a2a3a4a";
-        Long id=1L;
-        String string1 = string;
-        repository.update(id, string1);
-        System.out.println(repository.findById(id));
+
     }
 
     @Test

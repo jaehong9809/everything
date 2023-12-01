@@ -5,22 +5,22 @@ import com.zaxxer.hikari.HikariDataSource;
 import hong.everything.domain.Paper;
 import hong.everything.repository.PaperRepository;
 import hong.everything.repository.PaperRepositoryV2;
+import hong.everything.repository.PaperRepositoryV3;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sql.DataSource;
+
 import static hong.everything.repository.ConnectionConst.*;
 
 @Controller
 public class WebController {
-    private final PaperRepositoryV2 paperRepository;
-    public WebController() {
-        HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setJdbcUrl(URL);
-        dataSource.setUsername(USERNAME);
-        dataSource.setPassword(PASSWORD);
-        this.paperRepository = new PaperRepositoryV2(dataSource);
+    DataSource dataSource;
+    private final PaperRepositoryV3 paperRepository;
+    public WebController(DataSource dataSource) {
+        this.paperRepository = new PaperRepositoryV3(dataSource);
     }
 
     @GetMapping
