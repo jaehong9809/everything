@@ -3,6 +3,7 @@ package hong.everything.repository;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+//사용안함
 
 import static hong.everything.repository.ConnectionConst.*;
 
