@@ -1,19 +1,11 @@
 package hong.everything.web;
 
-
-import com.zaxxer.hikari.HikariDataSource;
 import hong.everything.domain.Paper;
-import hong.everything.repository.PaperRepository;
-import hong.everything.repository.PaperRepositoryV2;
 import hong.everything.repository.PaperRepositoryV3;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.sql.DataSource;
-
-import static hong.everything.repository.ConnectionConst.*;
 
 @Controller
 public class WebController {

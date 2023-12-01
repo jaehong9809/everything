@@ -3,8 +3,6 @@ package hong.everything.repository;
 import hong.everything.domain.Paper;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.support.JdbcUtils;
-import org.springframework.util.unit.DataUnit;
-
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;

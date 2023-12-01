@@ -3,15 +3,9 @@ package hong.everything.repository;
 import hong.everything.domain.Paper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.datasource.DataSourceUtils;
-import org.springframework.jdbc.support.JdbcUtils;
-
 import javax.sql.DataSource;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
-
-import static hong.everything.repository.DBConnectionutil.getConnection;
 
 public class PaperRepositoryV3 {
     private Long id=0L;
