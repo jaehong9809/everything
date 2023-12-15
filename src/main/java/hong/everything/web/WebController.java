@@ -1,20 +1,19 @@
 package hong.everything.web;
 
 import hong.everything.domain.Paper;
+import hong.everything.repository.PaperRepository;
 import hong.everything.repository.PaperRepositoryV3;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.sql.DataSource;
 
 @Controller
+@RequiredArgsConstructor
 public class WebController {
-    DataSource dataSource;
-    private final PaperRepositoryV3 paperRepository;
-    public WebController(DataSource dataSource) {
-        this.paperRepository = new PaperRepositoryV3(dataSource);
-    }
 
+    private final PaperRepository repository;
     @GetMapping
     public String main() {
         return "application/main";
@@ -22,15 +21,15 @@ public class WebController {
 
     @GetMapping("/note")
     public String note(Model model) {
-        model.addAttribute("papers", paperRepository.findAll());
+        model.addAttribute("papers", repository.findAll());
         return "application/note";
     }
 
     @PostMapping("/note")
     public String note2(@RequestParam("words") String words, Model model) {
-        paperRepository.save(words);
-        model.addAttribute("papers", paperRepository.findAll());
-
+        Paper paper = new Paper(words);
+        Paper save = repository.save(paper);
+        model.addAttribute("papers", repository.findAll());
         return "redirect:/note";
     }
 
@@ -41,13 +40,13 @@ public class WebController {
 
     @PostMapping("/note/edit")
     public String editNote2(@ModelAttribute("paper") Paper paper, Model model) {
-        paperRepository.update(paper.getId(), paper.getWords());
+        repository.update(paper.getId(), paper.getWords());
         return "redirect:/note";
     }
 
     @PostMapping("/note/delete")
     public String deleteNote(@RequestParam("id") Long id) {
-        paperRepository.delete(id);
+        repository.delete(id);
         return "redirect:/note";
     }
 
